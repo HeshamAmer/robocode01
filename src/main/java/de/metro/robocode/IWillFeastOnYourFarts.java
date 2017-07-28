@@ -1,6 +1,5 @@
 package de.metro.robocode;
 
-import java.util.Random;
 import robocode.*;
 import static robocode.util.Utils.normalRelativeAngleDegrees;
 
@@ -9,13 +8,17 @@ public class IWillFeastOnYourFarts extends Robot {
     double angle = 90.0;
     boolean directionLeft = true;
     double radarBearing;
+    boolean isGunBehind = false;
+    boolean gunMovingEnabled = false;
     @Override
     public void run() {
 
         while (true) {
+
             ahead(radius );
-           // turnGunLeft(angle);
+            // turnGunLeft(angle);
            // fireBullet(getEnergy());
+            /*
             if (directionLeft) {
                 turnRadarLeft( angle );
                 turnGunLeft( angle );
@@ -23,6 +26,7 @@ public class IWillFeastOnYourFarts extends Robot {
                 turnRadarRight( angle );
                 turnGunRight( angle );
             }
+            */
             setDebugProperty( "bearign", String.valueOf( radarBearing ) );
             setDebugProperty( "RadarDirection", String.valueOf( directionLeft ) );
 
@@ -30,21 +34,15 @@ public class IWillFeastOnYourFarts extends Robot {
     }
 
     public void onScannedRobot(ScannedRobotEvent e) {
-        Double gunTurnAmt = normalRelativeAngleDegrees(e.getBearing() + (getHeading() - getRadarHeading()));
-        turnGunRight(gunTurnAmt);
+//        setAdjustRadarForGunTurn( true );
 
-        setAdjustRadarForGunTurn( true );
-//        radarBearing = e.getBearing();
+        radarBearing = e.getBearing();
 //        turnGunLeft( radarBearing );
         //bearing is from 0 to 180 if infront, and
-        if (radarBearing >= 90 ) {
-            directionLeft= true;
-        } else {
-            directionLeft=false;
+        if (Math.abs(  radarBearing ) >= 80  && Math.abs( radarBearing ) <= 100) {
+            fire(5);
+            fireBullet( getEnergy() );
         }
-
-      //  fire(1);
-      //  fireBullet(getEnergy());
     }
 
     public void onHitByBullet(HitByBulletEvent e) {
@@ -53,10 +51,15 @@ public class IWillFeastOnYourFarts extends Robot {
     public void onHitWall(HitWallEvent e) {
         final double bearing = e.getBearing();
         turnLeft(90-bearing );
+        if (gunMovingEnabled == false) {
+            turnGunLeft( 90 );
+            //turnRadarLeft( 90 );
+            gunMovingEnabled = true;
+        }
+
     }
     public void onHitRobot(HitRobotEvent e) {
-        final double bearing = e.getBearing();
         back( radius/2 );
-        turnLeft(90-bearing );
+        turnLeft(45 );
     }
 }
