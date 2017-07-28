@@ -16,17 +16,6 @@ public class IWillFeastOnYourFarts extends Robot {
         while (true) {
 
             ahead(radius );
-            // turnGunLeft(angle);
-           // fireBullet(getEnergy());
-            /*
-            if (directionLeft) {
-                turnRadarLeft( angle );
-                turnGunLeft( angle );
-            } else {
-                turnRadarRight( angle );
-                turnGunRight( angle );
-            }
-            */
             setDebugProperty( "bearign", String.valueOf( radarBearing ) );
             setDebugProperty( "RadarDirection", String.valueOf( directionLeft ) );
 
@@ -35,13 +24,14 @@ public class IWillFeastOnYourFarts extends Robot {
 
     public void onScannedRobot(ScannedRobotEvent e) {
 //        setAdjustRadarForGunTurn( true );
+        setDebugProperty( "ScannedRobotEvent", String.valueOf( e ) );
 
         radarBearing = e.getBearing();
-//        turnGunLeft( radarBearing );
-        //bearing is from 0 to 180 if infront, and
+
+        setDebugProperty( "Distance", String.valueOf( e.getDistance() ) );
         if (Math.abs(  radarBearing ) >= 80  && Math.abs( radarBearing ) <= 100) {
-            fire(5);
-            fireBullet( getEnergy() );
+            if (e.getDistance() < 330)
+                fireBullet( 50 );
         }
     }
 
