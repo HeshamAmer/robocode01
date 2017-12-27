@@ -34,7 +34,8 @@ Battle preparations or how to start a war
 3. Add the classnames of the participating robots to the `selectedRobots` property in the battle file
 4. Run the following command in your Robocode folder
    `java -Xmx1024M -cp libs/robocode.jar robocode.Robocode -battle battles/battles.battle -results results.txt`
-5. Watch the fight!
+5. To setup the RoboFight through the UI, you should run the bash file `robocode.sh` and that will fire up a friendly interactive UI 
+6. Watch the fight!
 
 Documentation and other links
 ----
