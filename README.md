@@ -1,3 +1,6 @@
+
+
+
 Robocode - Template
 ====
 This is a slightly modified version of Norbert Schneider's Robocode Template at: https://github.com/bertschneider/RobocodeTemplate
@@ -6,16 +9,20 @@ It contains the Robocode API (version 1.9.2.6) from: http://robocode.sourceforge
 
 This little project can be used as template for your first [Robocode](http://robocode.sourceforge.net/) robots and automated battles.
 
+> Blockquote
+
 For example it should be a good starting point for a tournament in your company...
 
 Development preparations or how to build a new robot
 ----
-
-1. Import the Maven project into an IDE of your choice
-2. Change the name of the `de.metro.TestRobot` Java and properties file to the name of your robot
-3. Set the new classname of your robot in the properties file
-4. Implement a superior robot
-5. Build the robot jar with the Maven command `mvn clean install`
+1. Download and install the Robocode Jar file from this link: https://sourceforge.net/projects/robocode/files/latest/download?source=files 
+2. Run the installation command "java -jar robocode-1.9.3.0-setup.jar" (Change the numbers to your version if needed)
+3. Create a destination folder inside your Robocode (The installed folder from step 2)
+4. Import the Maven project into an IDE of your choice into destination folder
+5. Change the name of the `de.metro.TestRobot` Java and properties file to the name of your robot
+6. Set the new classname of your robot in the properties file
+7. Implement a superior robot and rule above them all!
+8. Build the robot jar with the Maven command `mvn clean install`
 
 You could also set your own artifact name in the POM file - just make sure it is a unique name.
 
