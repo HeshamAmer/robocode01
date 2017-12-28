@@ -25,7 +25,7 @@ public class IWillFeastOnYourFarts extends Robot {
 
     public void onScannedRobot(ScannedRobotEvent e) {
 //        setAdjustRadarForGunTurn( true );
-        setDebugProperty( "ScannedRobotEvent", String.valueOf( e ) );
+        setDebugProperty( "ScannedRobotEvent", String.valueOf( asde ) );
 
         radarBearing = e.getBearing();
         if ( radarBearing >=0 && radarBearing <= 5)
