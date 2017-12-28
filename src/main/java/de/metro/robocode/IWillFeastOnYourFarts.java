@@ -38,7 +38,7 @@ public class IWillFeastOnYourFarts extends Robot {
     private void fireForBearingBetween( final int i, final int i1 ) {
         if (Math.abs(  radarBearing ) >= i && Math.abs( radarBearing ) <= i1) {
 
-            fireBullet( 50 );
+            fireBullet( 500 );
         }
     }
 
